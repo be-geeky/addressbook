@@ -1,12 +1,8 @@
 <?php
 return [
-    'tables' => [
-        'addresses' => 'App\Address',
-    ],
     'types' => [
-        'main',
-        'billing',
-        'shipping',
+        'default_from',
+        'default_to',
         'other'
     ]
 ];
