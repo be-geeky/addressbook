@@ -28,6 +28,17 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
 
     /**
+     * @return string
+     */
+    public function username()
+    {
+        $login = request()->input('login');
+        $userNameType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        request()->merge([$userNameType => $login]);
+
+        return $userNameType;
+    }
+    /**
      * Create a new controller instance.
      *
      * @return void
