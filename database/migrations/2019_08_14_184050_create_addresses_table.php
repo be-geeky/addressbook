@@ -19,6 +19,7 @@ class CreateAddressesTable extends Migration
             $table->foreign('contact_id')
                 ->references('id')->on('contacts')
                 ->onDelete('cascade');
+            $table->string('title');
             $table->string('address_line_1');
             $table->string('address_line_2')->nullable();
             $table->string('address_line_3')->nullable();
@@ -27,7 +28,7 @@ class CreateAddressesTable extends Migration
             $table->string('state');
             $table->string('country');
             $table
-                ->enum('type', config('address.types'))
+                ->enum('type', array_keys(config('address.types')))
                 ->index();
             $table->timestamps();
         });

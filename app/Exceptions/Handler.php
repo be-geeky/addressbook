@@ -3,10 +3,13 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Prophecy\Exception\Doubler\MethodNotFoundException;
 
 class Handler extends ExceptionHandler
 {
+    const VALIDATION_ERROR_CODE = 422;
     /**
      * A list of the exception types that are not reported.
      *
@@ -46,6 +49,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($exception instanceof \Illuminate\Validation\ValidationException){
+            return response()->json(['errors'=>$exception->errors()], self::VALIDATION_ERROR_CODE);
+        }
+        if ($exception instanceof ModelNotFoundException && $request->wantsJson()) {
+            return response()->json([
+                'error' => 'Resource not found'
+            ], 404);
+        }
+
         return parent::render($request, $exception);
     }
 }
