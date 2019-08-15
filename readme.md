@@ -3,10 +3,12 @@
 
 **Steps to install**
 
-- Clone repository 
-  -- git clone https://github.com/be-geeky/addressbook.git
-  -- cd addressbook
-- Run bellow command 
+- Clone repository
+  ```shell 
+  $ git clone https://github.com/be-geeky/addressbook.git
+  $ cd addressbook
+- Run bellow commands
+
    ```shell
    $ git checkout -b dev 
    $ composer install
@@ -16,10 +18,11 @@
   
 **RESTFull Implementation**    
 - Get Addresses
-  > Method: GET
-    url: http://127.0.0.1:8001/api/addresses/
+   Method: GET
+   url: http://127.0.0.1:8001/api/addresses/
 - Add Address
-  > Method: POST
+  ```  
+  Method: POST
         url: http://127.0.0.1:8001/api/addresses
         Request Payload: 
     {
@@ -35,9 +38,10 @@
       "name": "sdsd",
       "phone": "43434343"
     }
-       Headers: Content-Type:application/json, Accept:application/json 
+  Headers: Content-Type:application/json, Accept:application/json 
 - Update Address
-   > Method: PUT
+    ```
+     Method: PUT
      url: http://127.0.0.1:8001/api/addresses/{id}
      Request Payload: 
      Headers: Content-Type:application/json, Accept:application/json              
@@ -57,5 +61,11 @@
      }
      Headers: Content-Type:application/json, Accept:application/json
 - Get Single Address
-   > Method: GET
+   ```
+     Method: GET
      url: http://127.0.0.1:8001/api/addresses/{id}
+
+  
+  # There is only basic validation implementation
+  # Authentication for REST Apis (JWT/Passport) not implemented
+  # CSS Styling might not be proper
