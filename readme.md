@@ -10,7 +10,7 @@
 - Run bellow commands
 
    ```shell
-   $ git checkout -b dev 
+   $ git checkout -b dev origin/dev 
    $ composer install
    $ cp .env.example .env //Make your changes 
    $ php artisan migrate 
